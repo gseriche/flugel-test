@@ -1,0 +1,32 @@
+name: Testing flugel test.
+on:
+  [push]
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: 'Set up Go'
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.15
+
+      - name: 'Setup SSH Key'
+        uses: webfactory/ssh-agent@v0.4.1
+        with:
+          ssh-private-key: ${{ secrets.SSH_KEY }}
+
+      - name: 'Setup Dependencies'
+        working-directory: test/
+        run: go get -v -t -d && go mod tidy
+
+      - name: 'Lets test the test'
+        working-directory: test/
+        run: go test -v
