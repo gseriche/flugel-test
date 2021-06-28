@@ -15,10 +15,10 @@ Also you need to create an AWS account to get access and give the possibility
 to create the bucket and upload the file.
 The account must have this permission:
 
--s3:GetBucketLocation
--s3:ListBucket
--s3:GetObject
--s3:PutObject
+- s3:GetBucketLocation
+- s3:ListBucket
+- s3:GetObject
+- s3:PutObject
 
 After that you should get the Access Key to fill the file called envrc, this file
 has the environment variable to test the terraform in local.
@@ -73,10 +73,11 @@ go test
 ## How to test the code in GitHub Action
 
 You must create 4 secrets environment variables called:
--AWS_ACCESS_KEY_ID
--AWS_SECRET_ACCESS_KEY
--AWS_DEFAULT_REGION
--SSH_KEY
+
+- AWS_ACCESS_KEY_ID
+- AWS_SECRET_ACCESS_KEY
+- AWS_DEFAULT_REGION
+- SSH_KEY
 
 The three first variables must have the same condition explained in the first
 paragraph, after that you should create a SSH_KEY variable having your private
