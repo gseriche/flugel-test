@@ -6,10 +6,10 @@ This is a simple example to create a bucket called "flugel-terraform-test" and
 
 ## What I need to use this code
 
-This Terraform script was executed with the version 0.15.5 and two providers:
+This Terraform script was executed with the version 1.1.9 and two providers:
 
--aws v3.47.0
--local v2.1.0
+-aws v4.13.0
+-local v2.2.2
 
 Also you need to create an AWS account to get access and give the possibility
 to create the bucket and upload the file.
