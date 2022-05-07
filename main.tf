@@ -9,12 +9,12 @@ resource "aws_s3_bucket" "my_bucket" {
 }
 
 resource "local_file" "test1" {
-  content  = timestamp()
+  content  = formatdate("YYYY-MM-DD'T'hh:mm:ssZZZZZ",timestamp())
   filename = "test1.txt"
 }
 
 resource "local_file" "test2" {
-  content  = timestamp()
+  content  = formatdate("YYYY-MM-DD'T'hh:mm:ssZZZZZ",timestamp())
   filename = "test2.txt"
 }
 
