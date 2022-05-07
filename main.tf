@@ -1,20 +1,24 @@
 # lets create a bucket
 resource "aws_s3_bucket" "my_bucket" {
   bucket = "flugel-terraform-test"
-  acl    = "private"
   tags = {
     Name        = "My Flugel test bucket"
     Environment = "Test"
   }
 }
 
+resource "aws_s3_bucket_acl" "my_bucket" {
+  bucket = aws_s3_bucket.my_bucket
+  acl    = "private"
+}
+
 resource "local_file" "test1" {
-  content  = formatdate("YYYY-MM-DD'T'hh:mm:ssZZZZZ",timestamp())
+  content  = formatdate("YYYY-MM-DD'T'hh:mm:ssZ",timestamp())
   filename = "test1.txt"
 }
 
 resource "local_file" "test2" {
-  content  = formatdate("YYYY-MM-DD'T'hh:mm:ssZZZZZ",timestamp())
+  content  = formatdate("YYYY-MM-DD'T'hh:mm:ssZ",timestamp())
   filename = "test2.txt"
 }
 
